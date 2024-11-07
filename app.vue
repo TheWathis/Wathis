@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import Navbar from "./components/Navbar.vue";
 import Hero from "./components/Hero.vue";
 import PortfolioSection from "./components/PortfolioSection.vue";
@@ -24,6 +25,19 @@ const websites = [
         url: "https://dansquelbarjevaiscesoir.fr",
     },
 ];
+
+onMounted(() => {
+    const script = document.createElement("script");
+    script.async = true;
+    script.defer = true;
+    script.src = "https://umami.wathis.com/script.js";
+    script.setAttribute(
+        "data-website-id",
+        "80dc821d-a36f-4ddd-a632-b2ad45d4ab96",
+    );
+    document.head.appendChild(script);
+    document.title = "Wathis";
+});
 </script>
 
 <style scoped></style>
