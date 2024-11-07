@@ -3,7 +3,7 @@
         <Navbar />
         <Hero />
         <PortfolioSection :websites="websites" />
-        <!-- <ContactSection /> -->
+        <ContactSection />
         <Footer />
     </div>
 </template>
@@ -13,7 +13,7 @@ import { onMounted } from "vue";
 import Navbar from "./components/Navbar.vue";
 import Hero from "./components/Hero.vue";
 import PortfolioSection from "./components/PortfolioSection.vue";
-// import ContactSection from "./components/ContactSection.vue";
+import ContactSection from "./components/ContactSection.vue";
 import Footer from "./components/Footer.vue";
 
 const websites = [

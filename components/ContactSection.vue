@@ -9,48 +9,66 @@
                         <span
                             class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text"
                         >
-                            Let's Create Together
+                            Give me your ideas
                         </span>
                     </h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <div class="contact-info-item">
-                            <i class="fas fa-envelope text-violet-600"></i>
-                            <span>hello@wathis.com</span>
+                <div class="max-w-2xl mx-auto">
+                    <form @submit.prevent="handleSubmit" class="space-y-4">
+                        <div class="website-contact-form">
+                            <input
+                                v-model="formData.website"
+                                type="text"
+                                name="website"
+                                autocomplete="off"
+                                tabindex="-1"
+                            />
                         </div>
-                        <div class="contact-info-item">
-                            <i class="fas fa-phone text-violet-600"></i>
-                            <span>(555) 123-4567</span>
-                        </div>
-                        <div class="contact-info-item">
-                            <i
-                                class="fas fa-map-marker-alt text-violet-600"
-                            ></i>
-                            <span>123 Creative Ave, Digital City</span>
-                        </div>
-                    </div>
-                    <form class="space-y-4">
                         <input
+                            v-model="formData.email"
+                            type="email"
+                            placeholder="Your Email *"
+                            required
+                            class="contact-input"
+                        />
+                        <input
+                            v-model="formData.name"
                             type="text"
                             placeholder="Your Name"
                             class="contact-input"
                         />
-                        <input
-                            type="email"
-                            placeholder="Your Email"
-                            class="contact-input"
-                        />
                         <textarea
-                            placeholder="Your Message"
+                            v-model="formData.message"
+                            placeholder="Your Idea *"
                             rows="4"
+                            required
                             class="contact-input"
                         ></textarea>
                         <button
-                            class="w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-lg hover:opacity-90 transition-opacity"
+                            type="submit"
+                            :disabled="isSubmitting || isFormDisabled"
+                            class="w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
                         >
-                            Send Message
+                            {{
+                                isFormDisabled
+                                    ? "Message Sent"
+                                    : isSubmitting
+                                      ? "Sending..."
+                                      : "Send Message"
+                            }}
                         </button>
+
+                        <div
+                            v-if="submitStatus"
+                            :class="
+                                submitStatus.type === 'success'
+                                    ? 'text-green-600'
+                                    : 'text-red-600'
+                            "
+                            class="mt-4 text-center"
+                        >
+                            {{ submitStatus.message }}
+                        </div>
                     </form>
                 </div>
             </div>
@@ -58,7 +76,87 @@
     </section>
 </template>
 
+<script setup>
+const formData = ref({
+    website: "",
+    name: "",
+    email: "",
+    message: "",
+});
+
+const isSubmitting = ref(false);
+const isFormDisabled = ref(false);
+const submitStatus = ref(null);
+
+const enableFormAfterDelay = () => {
+    setTimeout(() => {
+        isFormDisabled.value = false;
+        submitStatus.value = null;
+    }, 60000); // Re-enable after 1 minute
+};
+
+const handleSubmit = async () => {
+    // Prevent submission if form is disabled
+    if (isFormDisabled.value) return;
+
+    try {
+        if (formData.value.website) {
+            formData.value = { name: "", email: "", message: "", website: "" };
+            submitStatus.value = {
+                type: "success",
+                message: "Message sent successfully! I'll try get back to you.",
+            };
+            isFormDisabled.value = true;
+            return;
+        }
+
+        isSubmitting.value = true;
+        submitStatus.value = null;
+
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData.value),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message || "Failed to send message");
+        }
+
+        // Clear form and show success message
+        formData.value = { name: "", email: "", message: "" };
+        submitStatus.value = {
+            type: "success",
+            message: "Message sent successfully! I'll try get back to you.",
+        };
+
+        isFormDisabled.value = true;
+        enableFormAfterDelay();
+    } catch (error) {
+        submitStatus.value = {
+            type: "error",
+            message:
+                error.message ||
+                "Failed to send message. Please try again later.",
+        };
+    } finally {
+        isSubmitting.value = false;
+    }
+};
+</script>
+
 <style scoped>
+.website-contact-form {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+
 .contact-input {
     @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all;
 }
