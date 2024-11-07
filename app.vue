@@ -20,7 +20,7 @@ const websites = [
     {
         name: "Dans Quel Bar Je Vais Ce Soir",
         description:
-            "A web application helping Parisians find the perfect bar for their evening based on various criteria and preferences.",
+            "A web application helping you and your drinking buddy find the perfect bar for your evening.",
         image: "/images/dansquelbarjevaiscesoir.webp",
         url: "https://dansquelbarjevaiscesoir.fr",
     },
