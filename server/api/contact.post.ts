@@ -1,16 +1,18 @@
 import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
-
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+
+  const transporter = nodemailer.createTransport({
+    host: config.smtp.host,
+    port: Number(config.smtp.port),
+    secure: false,
+    auth: {
+      user: config.smtp.user,
+      pass: config.smtp.pass,
+    },
+  });
+
   try {
     const body = await readBody(event);
 
