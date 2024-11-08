@@ -12,7 +12,9 @@
                     </span>
                 </h1>
             </div>
-            <p class="text-2xl text-gray-700 animate-slide-up">
+            <p
+                class="text-2xl text-gray-700 dark:text-gray-300 animate-slide-up"
+            >
                 Turning <del>your</del> <b>my</b> ideas into stunning digital
                 experiences
             </p>
@@ -26,7 +28,7 @@
             </div>
         </div>
         <div
-            class="absolute inset-0 bg-gradient-to-r from-violet-200/30 to-fuchsia-200/30 animate-pulse"
+            class="absolute inset-0 bg-gradient-to-r from-violet-200/30 to-fuchsia-200/30 dark:from-violet-900/30 dark:to-fuchsia-900/30 animate-pulse"
         ></div>
     </header>
 </template>

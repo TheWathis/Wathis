@@ -1,5 +1,7 @@
 <template>
-    <div class="min-h-screen bg-gradient-to-br from-violet-50 to-fuchsia-50">
+    <div
+        class="min-h-screen bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200"
+    >
         <Navbar />
         <Hero />
         <PortfolioSection :websites="websites" />

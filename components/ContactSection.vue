@@ -1,7 +1,9 @@
 <template>
     <section id="contact" class="relative">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-            <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8">
+            <div
+                class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl shadow-xl p-8"
+            >
                 <div class="inline-block w-full">
                     <h2
                         class="text-4xl font-bold text-center mb-8 leading-tight"
