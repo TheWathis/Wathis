@@ -1,22 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    'nuxt-security',
-    '@nuxtjs/i18n',
-  ],
+  modules: ["nuxt-security", "@nuxtjs/i18n"],
 
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
 
+  plugins: [{ src: "~/plugins/motion.client.ts", mode: "client" }],
+
   i18n: {
     locales: [
-      { code: 'en', iso: 'en-US', file: 'en.js' },
-      { code: 'fr', iso: 'fr-FR', file: 'fr.js' }
+      { code: "en", iso: "en-US", file: "en.js" },
+      { code: "fr", iso: "fr-FR", file: "fr.js" },
     ],
-    defaultLocale: 'en',
-    langDir: 'locales',
-    strategy: 'prefix_except_default'
+    defaultLocale: "en",
+    langDir: "locales",
+    strategy: "prefix_except_default",
   },
 
   postcss: {

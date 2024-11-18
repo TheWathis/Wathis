@@ -8,7 +8,7 @@
                 <span
                     class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text"
                 >
-                    {{ $t('portfolio.title') }}
+                    {{ $t("portfolio.title") }}
                 </span>
             </h2>
         </div>
@@ -17,10 +17,7 @@
                 v-for="(website, index) in websites"
                 :key="index"
                 class="group relative rounded-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl"
-                v-motion
-                :initial="{ opacity: 0, y: 50 }"
-                :visibleOnce="{ opacity: 1, y: 0 }"
-                :delay="index * 100"
+                :class="{ 'motion-safe:animate-fadeIn': true }"
             >
                 <div class="relative">
                     <img
@@ -41,7 +38,7 @@
                                 target="_blank"
                                 class="mt-4 inline-block px-4 py-2 bg-white text-violet-600 rounded-full hover:bg-violet-100 transition-colors"
                             >
-                                {{ $t('portfolio.cta') }}
+                                {{ $t("portfolio.cta") }}
                             </a>
                         </div>
                     </div>
@@ -52,8 +49,8 @@
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 defineProps({
     websites: {
@@ -62,3 +59,26 @@ defineProps({
     },
 });
 </script>
+
+<style scoped>
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.motion-safe\:animate-fadeIn {
+    @media (prefers-reduced-motion: no-preference) {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+}
+</style>
