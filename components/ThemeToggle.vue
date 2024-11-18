@@ -44,17 +44,7 @@ const isDark = ref(false);
 
 // Initialize theme on component mount
 onMounted(() => {
-    if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-        document.documentElement.classList.add("dark");
-        isDark.value = true;
-    } else {
-        document.documentElement.classList.remove("dark");
-        isDark.value = false;
-    }
+    isDark.value = document.documentElement.classList.contains("dark");
 });
 
 const toggleTheme = () => {
