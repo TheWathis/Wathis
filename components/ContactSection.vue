@@ -11,7 +11,7 @@
                         <span
                             class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text"
                         >
-                            Give me your ideas
+                            {{ $t('contact.title') }}
                         </span>
                     </h2>
                 </div>
@@ -21,7 +21,7 @@
                             <input
                                 v-model="formData.website"
                                 type="text"
-                                name="website"
+                                :name="$t('contact.form.website')"
                                 autocomplete="off"
                                 tabindex="-1"
                             />
@@ -29,19 +29,19 @@
                         <input
                             v-model="formData.email"
                             type="email"
-                            placeholder="Your Email *"
+                            :placeholder="$t('contact.form.email')"
                             required
                             class="contact-input"
                         />
                         <input
                             v-model="formData.name"
                             type="text"
-                            placeholder="Your Name"
+                            :placeholder="$t('contact.form.name')"
                             class="contact-input"
                         />
                         <textarea
                             v-model="formData.message"
-                            placeholder="Your Idea *"
+                            :placeholder="$t('contact.form.idea')"
                             rows="4"
                             required
                             class="contact-input"
@@ -53,10 +53,10 @@
                         >
                             {{
                                 isFormDisabled
-                                    ? "Message Sent"
+                                    ? $t('contact.form.sent')
                                     : isSubmitting
-                                      ? "Sending..."
-                                      : "Send Message"
+                                      ? $t('contact.form.sending')
+                                      : $t('contact.form.send')
                             }}
                         </button>
 
@@ -79,6 +79,9 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 const formData = ref({
     website: "",
     name: "",
@@ -106,7 +109,7 @@ const handleSubmit = async () => {
             formData.value = { name: "", email: "", message: "", website: "" };
             submitStatus.value = {
                 type: "success",
-                message: "Message sent successfully! I'll try get back to you.",
+                message: t('contact.form.send_success'),
             };
             isFormDisabled.value = true;
             return;
@@ -126,14 +129,14 @@ const handleSubmit = async () => {
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || "Failed to send message");
+            throw new Error(result.message || t('contact.form.send_error'));
         }
 
         // Clear form and show success message
         formData.value = { name: "", email: "", message: "" };
         submitStatus.value = {
             type: "success",
-            message: "Message sent successfully! I'll try get back to you.",
+            message: t('contact.form.send_success'),
         };
 
         isFormDisabled.value = true;
@@ -141,9 +144,7 @@ const handleSubmit = async () => {
     } catch (error) {
         submitStatus.value = {
             type: "error",
-            message:
-                error.message ||
-                "Failed to send message. Please try again later.",
+            message: error.message || t('contact.form.send_error'),
         };
     } finally {
         isSubmitting.value = false;

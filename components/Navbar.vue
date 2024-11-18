@@ -12,6 +12,7 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
+                    <LanguageSelector />
                     <ThemeToggle />
                     <!-- <a href="#portfolio" class="nav-link dark:text-gray-300 dark:hover:text-violet-400">Portfolio</a> -->
                     <!-- <a href="#contact" class="nav-link dark:text-gray-300 dark:hover:text-violet-400">Contact</a> -->
@@ -23,6 +24,7 @@
 
 <script setup>
 import ThemeToggle from "./ThemeToggle.vue";
+import LanguageSelector from "./LanguageSelector.vue";
 </script>
 
 <style scoped>

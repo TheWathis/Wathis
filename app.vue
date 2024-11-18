@@ -4,29 +4,30 @@
     >
         <Navbar />
         <Hero />
-        <PortfolioSection :websites="websites" />
+        <PortfolioSection :websites="localizedWebsites" />
         <ContactSection />
         <Footer />
     </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
+import { useI18n } from 'vue-i18n';
+
 import Navbar from "./components/Navbar.vue";
 import Hero from "./components/Hero.vue";
 import PortfolioSection from "./components/PortfolioSection.vue";
 import ContactSection from "./components/ContactSection.vue";
 import Footer from "./components/Footer.vue";
 
-const websites = [
-    {
-        name: "Dans Quel Bar Je Vais Ce Soir",
-        description:
-            "A web application helping you and your drinking buddy find the perfect bar for your evening.",
-        image: "/images/dansquelbarjevaiscesoir.webp",
-        url: "https://dansquelbarjevaiscesoir.fr",
-    },
-];
+const { t } = useI18n();
+
+const localizedWebsites = computed(() => [{
+    name: t('portfolio.dansQuelBar.name'),
+    description: t('portfolio.dansQuelBar.description'),
+    image: "/images/dansquelbarjevaiscesoir.webp",
+    url: "https://dansquelbarjevaiscesoir.fr",
+}]);
 
 onMounted(() => {
     const script = document.createElement("script");

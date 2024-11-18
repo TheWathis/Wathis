@@ -8,22 +8,21 @@
                     <span
                         class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text"
                     >
-                        I Create Digital Magic
+                        {{ $t('hero.title') }}
                     </span>
                 </h1>
             </div>
             <p
                 class="text-2xl text-gray-700 dark:text-gray-300 animate-slide-up"
             >
-                Turning <del>your</del> <b>my</b> ideas into stunning digital
-                experiences
+                {{ $t('hero.subtitle') }}
             </p>
             <div class="mt-8">
                 <a
                     href="#portfolio"
                     class="inline-block px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-full hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
                 >
-                    See My Work
+                    {{ $t('hero.cta') }}
                 </a>
             </div>
         </div>
@@ -32,6 +31,11 @@
         ></div>
     </header>
 </template>
+
+<script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+</script>
 
 <style scoped>
 @keyframes fade-in {

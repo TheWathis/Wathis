@@ -8,7 +8,7 @@
                 <span
                     class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text"
                 >
-                    My Amazing Projects
+                    {{ $t('portfolio.title') }}
                 </span>
             </h2>
         </div>
@@ -41,7 +41,7 @@
                                 target="_blank"
                                 class="mt-4 inline-block px-4 py-2 bg-white text-violet-600 rounded-full hover:bg-violet-100 transition-colors"
                             >
-                                View Project →
+                                {{ $t('portfolio.cta') }}
                             </a>
                         </div>
                     </div>
@@ -52,6 +52,9 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 defineProps({
     websites: {
         type: Array,
