@@ -29,6 +29,12 @@ const localizedWebsites = computed(() => [
         image: "/images/dansquelbarjevaiscesoir.webp",
         url: "https://dansquelbarjevaiscesoir.fr",
     },
+    {
+        name: t("portfolio.onlyfacts.name"),
+        description: t("portfolio.onlyfacts.description"),
+        image: "/images/onlyfacts.webp",
+        url: "https://theonlyfacts.com",
+    },
 ]);
 
 // Set up head
