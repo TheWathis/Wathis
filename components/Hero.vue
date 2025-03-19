@@ -8,21 +8,21 @@
                     <span
                         class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text"
                     >
-                        {{ $t('hero.title') }}
+                        {{ $t("hero.title") }}
                     </span>
                 </h1>
             </div>
             <p
                 class="text-2xl text-gray-700 dark:text-gray-300 animate-slide-up"
             >
-                {{ $t('hero.subtitle') }}
+                {{ $t("hero.subtitle") }}
             </p>
             <div class="mt-8">
                 <a
                     href="#portfolio"
                     class="inline-block px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-full hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
                 >
-                    {{ $t('hero.cta') }}
+                    {{ $t("hero.cta") }}
                 </a>
             </div>
         </div>
@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 </script>
 
 <style scoped>

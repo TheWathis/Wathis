@@ -4,21 +4,24 @@ export default {
   },
   hero: {
     title: "I Create Digital Magic",
-    subtitle: "Turning my ideas into stunning digital experiences",
-    cta: "See My Work",
+    subtitle: "Let's face it, I do funny random projects",
+    cta: "See my work",
   },
   portfolio: {
     title: "My Amazing Projects",
     cta: "View Project →",
     dansQuelBar: {
       name: "Where Should I Drink Tonight",
-      description:
-        "A web application helping you and your drinking buddy find the perfect bar for your evening.",
+      description: "Don't know which bar to go to? Look no further.",
     },
     onlyfacts: {
       name: "OnlyFacts",
+      description: "Looking for facts? Look no further.",
+    },
+    chipsofficiel: {
+      name: "ChipsOfficiel",
       description:
-        "A website that gives you only facts. Nothing more, nothing less.",
+        "Wondering what to say when someone jinx you? Look no further.",
     },
   },
   contact: {

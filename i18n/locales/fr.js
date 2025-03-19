@@ -3,22 +3,25 @@ export default {
     // Add navbar translations
   },
   hero: {
-    title: "Je Crée de la Magie Numérique",
-    subtitle: "Transformer mes idées en expériences numériques époustouflantes",
-    cta: "Voir Mes Projets",
+    title: "Créateur de Magie Numérique",
+    subtitle: "Ne nous mentons pas, je fais des projets un peu random",
+    cta: "Voir mes projets",
   },
   portfolio: {
     title: "Mes Superbes Projets",
     cta: "Voir le Projet →",
     dansQuelBar: {
       name: "Dans Quel Bar Je Vais Ce Soir",
-      description:
-        "Une application web qui vous aide, vous et vos amis, à trouver le bar parfait pour votre soirée.",
+      description: "Tu ne sais pas dans quel bar aller ? Ne cherche plus.",
     },
     onlyfacts: {
       name: "OnlyFacts",
+      description: "Tu cherches des faits ? Ne cherche plus.",
+    },
+    chipsofficiel: {
+      name: "ChipsOfficiel",
       description:
-        "Un site web qui ne vous donne que des faits. Rien de plus, rien de moins.",
+        "Tu te demandais quoi répondre lorsque tu chips quelqu'un qui te chips ? Ne cherche plus.",
     },
   },
   contact: {

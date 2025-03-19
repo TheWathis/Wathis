@@ -21,10 +21,15 @@
             >
                 <div class="relative">
                     <img
+                        v-if="website.image"
                         :src="website.image"
                         :alt="website.name"
-                        class="w-full h-64 object-cover"
+                        class="w-full h-64 object-cover hover:mix-blend-darken"
                     />
+                    <div
+                        v-if="!website.image"
+                        class="w-full h-64 object-cover hover:mix-blend-darken bg-violet-950"
+                    ></div>
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-violet-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >

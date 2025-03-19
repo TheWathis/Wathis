@@ -35,6 +35,12 @@ const localizedWebsites = computed(() => [
         image: "/images/onlyfacts.webp",
         url: "https://theonlyfacts.com",
     },
+    {
+        name: t("portfolio.chipsofficiel.name"),
+        description: t("portfolio.chipsofficiel.description"),
+        image: "/images/chipsofficiel.webp",
+        url: "https://chipsofficiel.fr",
+    },
 ]);
 
 // Set up head
